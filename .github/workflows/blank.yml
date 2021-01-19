@@ -25,13 +25,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Deploy over rsync
-        uses: miked49er/rsync-deployments@v1.0
+      - name: Setup SSH agent
+        uses: webfactory/ssh-agent@v0.4.0
         with:
-          switches: -avzr --delete
-          path: dist/
-          remote_path: ${{ secrets.REMOTE_PATH }}
-          remote_host: ${{ secrets.DEPLOY_HOST }}
-          remote_user: ${{ secrets.DEPLOY_USER }}
-          remote_key: ${{ secrets.DEPLOY_KEY }}
+          ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
+      - name: Setup known_hosts
+        run: echo '${{ secrets.DEPLOY_HOST }} ${{ secrets.DEPLOY_KNOWN_HOST }} >> ~/.ssh/known_hosts
+      - name: Sync project files
+        run: rsync -avzr --delete ${GITHUB_WORKSPACE}/ ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.REMOTE_PATH }}
