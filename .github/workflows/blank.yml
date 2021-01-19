@@ -28,7 +28,7 @@ jobs:
       - name: Setup SSH agent
         uses: webfactory/ssh-agent@v0.4.0
         with:
-          ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
       - name: Setup known_hosts
         run: echo '${{ secrets.DEPLOY_HOST }} ${{ secrets.DEPLOY_KNOWN_HOST }} >> ~/.ssh/known_hosts
       - name: Sync project files
