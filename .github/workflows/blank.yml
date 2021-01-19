@@ -31,6 +31,6 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
       - name: Setup known_hosts
-        run: echo '${{ secrets.DEPLOY_HOST }} ${{ secrets.DEPLOY_KNOWN_HOST }} >> ~/.ssh/known_hosts
+        run: echo '${{ secrets.DEPLOY_HOST }} ${{ secrets.DEPLOY_KNOWN_HOST }}' >> ~/.ssh/known_hosts
       - name: Sync project files
         run: rsync -avzr --delete ${GITHUB_WORKSPACE}/ ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.REMOTE_PATH }}
