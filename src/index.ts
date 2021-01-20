@@ -6,4 +6,4 @@ app.get('/', (req: Request, res: Response) => {
     return res.send('OK');
 });
 
-app.listen(3000);
+app.listen(9002);
