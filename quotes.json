@@ -10,5 +10,9 @@
     {
         "text": "Remember, the web isn't about control. If a visitor to your site is familiar with using a browser's native form doodad, you won't be doing them any favors if you override the browser functionality with your own widget, even if you think your widget looks better.",
         "author": "Jeremy Keith"
+    },
+    {
+        "text": "Most sites need to prevent breadth — many many pages that are organized cohesively. A site that presents a single webpage is unlikely to present sufficient depth of content to justify extensive SEO.",
+        "author": "Harold Davis"
     }
 ]
