@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "serve": "webpack --mode=development && cp -R src/public dist && node dist/index"
+    "import": "node dist/import",
+    "serve": "webpack --mode=development && cp -R src/public dist && node dist/main"
   },
   "repository": {
     "type": "git",

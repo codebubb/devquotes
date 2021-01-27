@@ -17,6 +17,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: cp -R src/public dist
+      - run: cp quotes.json dist/
       - name: Setup SSH agent
         uses: webfactory/ssh-agent@v0.4.1
         with:
@@ -25,3 +26,5 @@ jobs:
         run: echo '${{ secrets.DEPLOY_HOST }} ${{ secrets.DEPLOY_KNOWN_HOST }}' >> ~/.ssh/known_hosts
       - name: Sync project files
         run: rsync -avzr --delete ${GITHUB_WORKSPACE}/dist/ ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.REMOTE_PATH }}
+      - name: Run Database Migration
+        run: ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} node ${{ secrets.REMOTE_PATH }}/import

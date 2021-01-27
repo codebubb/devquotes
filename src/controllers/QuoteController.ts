@@ -16,7 +16,6 @@ const transformQuote = (rawQuote: any) => {
 const getRandomQuote = async (req: Request, res: Response) => {
     try {
         const sample = await Quote.aggregate().sample(1);
-
         return res.json(transformQuote(sample[0]));
     } catch (error) {
         console.log(error);

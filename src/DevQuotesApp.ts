@@ -1,8 +1,8 @@
-import express, { Express } from "express";
-import mongoose, { Mongoose } from "mongoose";
-import appConfig from "./app.config"
-import { appRoutes } from "./routes/AppRoutes";
-import { quoteRoutes } from "./routes/QuoteRoutes";
+import express, { Express } from 'express';
+import mongoose, { Mongoose } from 'mongoose';
+import appConfig from './app.config'
+import { appRoutes } from './routes/AppRoutes';
+import { quoteRoutes } from './routes/QuoteRoutes';
 
 export class DevQuotesApp {
   app: Express;
@@ -19,8 +19,8 @@ export class DevQuotesApp {
   }
 
   initalise() {
-    this.app.use("/quote", quoteRoutes);
-    this.app.use("/", appRoutes);
+    this.app.use('/quote', quoteRoutes);
+    this.app.use('/', appRoutes);
   }
 
   serve() {
