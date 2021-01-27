@@ -27,6 +27,6 @@ jobs:
       - name: Sync project files
         run: rsync -avzr --delete ${GITHUB_WORKSPACE}/dist/ ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.REMOTE_PATH }}
       - name: Check Node Version  
-        run: ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "echo `${which node) -v`"
+        run: ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "echo `$(which node) -v`"
       - name: Run Database Migration
         run: ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "${{ secrets.DB_ENV }} \`$(which node)\` ${{ secrets.REMOTE_PATH }}/import.js ${{ secrets.REMOTE_PATH }}/quotes.json"
