@@ -6,5 +6,9 @@
     {
         "text": "If there's one thing you learn by working on a lot of different Web sites, it's that almost any design idea--no matter how appallingly bad--can be made usable in the right circumstances, with enough effort",
         "author": "Steve Krug"
+    },
+    {
+        "text": "Remember, the web isn't about control. If a visitor to your site is familiar with using a browser's native form doodad, you won't be doing them any favors if you override the browser functionality with your own widget, even if you think your widget looks better.",
+        "author": "Jeremy Keith"
     }
 ]
