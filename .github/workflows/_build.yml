@@ -29,4 +29,4 @@ jobs:
       - name: Check Node Version  
         run: ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "echo `$(which node) -v`"
       - name: Run Database Migration
-        run: ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "${{ secrets.DB_ENV }} \`$(which node)\` ${{ secrets.REMOTE_PATH }}/import.js ${{ secrets.REMOTE_PATH }}/quotes.json"
+        run: ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} 'source ~/.nvm/nvm.sh; ${{ secrets.DB_ENV }} node ${{ secrets.REMOTE_PATH }}/import.js ${{ secrets.REMOTE_PATH }}/quotes.json'
