@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '14.x'
       - run: npm ci
-      - run: npm run build
+      - run: npm run build:prod
       - run: cp -R src/public dist
       - run: cp quotes.json dist/
       - name: Setup SSH agent

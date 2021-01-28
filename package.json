@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:server": "webpack --config=webpack.server.config",
-    "build:web": "webpack --config=webpack.web.config",
+    "build:server": "webpack --config=webpack.server.config.js",
+    "build:web": "webpack --config=webpack.web.config.js",
     "import": "node dist/import",
     "build:dev": "webpack --config=webpack.server.config.js --mode=development && webpack --config=webpack.web.config.js --mode=development",
+    "build:prod": "NODE_ENV=production npm run build:server && npm run build:web",
     "serve": "npm run build:dev && node dist/main"
   },
   "repository": {
