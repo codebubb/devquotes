@@ -1,5 +1,6 @@
 import express, { Express } from 'express';
 import mongoose, { Mongoose } from 'mongoose';
+import path from 'path';
 import appConfig from './app.config'
 import { appRoutes } from './routes/AppRoutes';
 import { quoteRoutes } from './routes/QuoteRoutes';
@@ -21,6 +22,7 @@ export class DevQuotesApp {
   initalise() {
     this.app.use('/api/quote', quoteRoutes);
     this.app.use('/', appRoutes);
+    this.app.use(express.static(path.join(__dirname, 'public')));
   }
 
   serve() {
