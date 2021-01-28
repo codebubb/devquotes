@@ -8,6 +8,7 @@ import { quoteRoutes } from './routes/QuoteRoutes';
 export class DevQuotesApp {
   app: Express;
   db: Promise<Mongoose>;
+  staticPath: string;
 
   constructor() {
     this.app = express();
@@ -22,12 +23,13 @@ export class DevQuotesApp {
   initalise() {
     this.app.use('/api/quote', quoteRoutes);
     this.app.use('/', appRoutes);
-    this.app.use(express.static(path.join(__dirname, 'public')));
+    this.staticPath = path.join(__dirname, 'public');
+    this.app.use(express.static(this.staticPath));
   }
 
   serve() {
     this.app.listen(appConfig.port, () =>
-      console.log(`DevQuotes API listening : ${appConfig.port}`)
+      console.log(`DevQuotes API listening : ${appConfig.port} [Static Content: ${this.staticPath}]`)
     );
   }
 }
