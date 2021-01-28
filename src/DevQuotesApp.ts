@@ -17,13 +17,13 @@ export class DevQuotesApp {
       useUnifiedTopology: true,
     });
 
+    this.staticPath = path.join(__dirname, 'public');
     this.initalise();
   }
 
   initalise() {
     this.app.use('/api/quote', quoteRoutes);
     this.app.use('/', appRoutes);
-    this.staticPath = path.join(__dirname, 'public');
     this.app.use(express.static(this.staticPath));
   }
 
