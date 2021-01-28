@@ -19,7 +19,7 @@ export class DevQuotesApp {
   }
 
   initalise() {
-    this.app.use('/quote', quoteRoutes);
+    this.app.use('/api/quote', quoteRoutes);
     this.app.use('/', appRoutes);
   }
 
